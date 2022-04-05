@@ -1,0 +1,69 @@
+#Análise descritiva dos eventos
+
+#Importar os pacotes que serão utilizados. Obs: caso não os tenha deve instalá-los, exceto ggplot2
+library(DescTools)
+#library(esquisse) #caso queira abrir uma janela para construção interativa dos gráficos
+library(ggplot2)
+
+#Importar o banco de dados
+library(readxl)
+banco_de_dados_teste <- read_excel("C:/Users/linda/OneDrive - FUND. UNIV. FED. DE CIENCIAS DA SAUDE DE POA/Backup CCE 12-2020/Documentos/LaFiEx/ConfOA/Repositórios de acesso aberto/Análise estatística/banco_de_dados_teste.xlsx", sheet = 2) #sheet especifica a planilha que deve ser importada
+View(banco_de_dados_teste)
+
+#Tabela de frequência
+Desc(banco_de_dados_teste,  plotit=F)
+
+#gráficos
+#esquisser(banco_de_dados_teste) #caso queira abrir uma janela para construção interativa dos gráficos
+
+#Gráfico de barras verticais dos países
+ggplot(banco_de_dados_teste) +
+  aes(x = pais) +
+  geom_bar(fill = "#000000") + #cor das barras
+  labs(x = "País", y = "Evento", #legenda dos eixos
+       title = "Países da América Latina envolvidos em eventos submetidos na plataforma Zenodo") + #título do gráfico
+  theme_minimal()
+
+#Gráfico de barras verticais dos gênero dos idealizadores
+ggplot(banco_de_dados_teste) +
+  aes(x = genero_idealiz) +
+  geom_bar(fill = "#000000") + #cor das barras
+  labs(x = "Gênero dos idealizadores", y = "Evento", #legenda dos eixos
+       title = "Gênero dos idealizadores dos eventos da América Latina submetidos na plataforma Zenodo") + #título do gráfico
+  theme_minimal()
+
+#Gráfico de barras verticais das áreas
+ggplot(banco_de_dados_teste) +
+  aes(x = area_definida) +
+  geom_bar(fill = "#000000") + #cor das barras
+  labs(x = "Área de conhecimento", y = "Evento", #legenda dos eixos
+       title = "Área dos eventos da América Latina submetidos na plataforma Zenodo") + #título do gráfico
+  theme_minimal()
+
+#Gráfico de barras verticais gênero x país
+ggplot(banco_de_dados_teste) +
+  aes(x = pais, fill = genero_idealiz) + #variáveis para análise
+  geom_bar() +
+  scale_fill_manual(values = c(feminino = "#898685", 
+                               masculino = "#000000")) + #cor das barras
+  labs(x = "País", y = "Evento", title = "Distribuição do gênero de idealizadores entre os países", 
+       fill = "Gênero do idealizador ou idealizadora") + #legenda e título do gráfico
+  theme_minimal()
+
+#Gráfico de barras verticais área de conhecimento x gênero de idealizadores
+ggplot(banco_de_dados_teste) +
+  aes(x = area_definida, fill = genero_idealiz) + #variáveis para análise
+  geom_bar() +
+  scale_fill_manual(values = c(feminino = "#898685", 
+                               masculino = "#000000")) + #cor das barras
+  labs(x = "Área do conhecimento", y = "Evento", title = "Distribuição do gênero de idealizadores entre as áreas de conhecimento", 
+       fill = "Gênero do idealizador ou idealizadora") + #legenda e título do gráfico
+  theme_minimal()
+
+#Gráfico de barras verticais dos países
+ggplot(banco_de_dados_teste) +
+  aes(x = pais) +
+  geom_bar(fill = "#000000") + #cor das barras
+  labs(x = "País", y = "Evento", #legenda dos eixos
+       title = "Países da América Latina envolvidos em eventos submetidos na plataforma Zenodo") + #título do gráfico
+  theme_minimal()
