@@ -59,11 +59,3 @@ ggplot(banco_de_dados_teste) +
   labs(x = "Área do conhecimento", y = "Evento", title = "Distribuição do gênero de idealizadores entre as áreas de conhecimento", 
        fill = "Gênero do idealizador ou idealizadora") + #legenda e título do gráfico
   theme_minimal()
-
-#Gráfico de barras verticais dos países
-ggplot(banco_de_dados_teste) +
-  aes(x = pais) +
-  geom_bar(fill = "#000000") + #cor das barras
-  labs(x = "País", y = "Evento", #legenda dos eixos
-       title = "Países da América Latina envolvidos em eventos submetidos na plataforma Zenodo") + #título do gráfico
-  theme_minimal()
